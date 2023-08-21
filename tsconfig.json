@@ -4,7 +4,7 @@
       "resources/**/*.ts",
       "resources/**/*.d.ts",
       "resources/**/*.vue"
-    ],  
+, "resources/js/stores/LocalGlossary.js"    ],  
     "compilerOptions": {
         "allowJs": true,
         "strict": false,
