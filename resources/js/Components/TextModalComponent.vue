@@ -24,10 +24,8 @@ export default {
     const render = () => {
         return [
                 h('div',  mainText.value), 
-                h('button', { onClick: async () => { 
-                                        await TextService.saveWord(LocalGlossaryStore.terms, ModalDictionaryStore); 
+                h('button', { class:"renderClass hide", onClick: async () => { 
                                         textRender();
-                                        ModalDictionaryStore.renderMainText();
                                     }}, 'add +')
               ]
     }

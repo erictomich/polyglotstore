@@ -4,10 +4,8 @@ import { useModalDictionaryStore } from '@/stores/ModalDictionary'
 import { h, ref, watch } from 'vue';
 import * as TextService from '@/Services/TextService'
 
-
-
 export default {
-  props:['text', 'rendering'],
+  props:['text'],
   setup(props) {
     const LocalGlossaryStore = useLocalGlossaryStore()
     const ModalDictionaryStore = useModalDictionaryStore();
@@ -16,7 +14,7 @@ export default {
 
     const textRender = () => {
         var textReplaced = TextService.composeText(props.text.text, LocalGlossaryStore.terms, ModalDictionaryStore);
-        console.log('render text');
+        //console.log('render text');
         mainText.value = h('div', [...textReplaced]);
     }
 
@@ -30,12 +28,7 @@ export default {
               ]
     }
 
-
-
-
     textRender();
-    
- 
     return () => render()
   }
 }

@@ -136,3 +136,34 @@ export const composeModalDictionaryText = (text: string, words: string[], ModalS
     var textReplaced = replaceTagsByComponentsOnModalDictionary(textWithTags, ModalStore);
     return textReplaced;
 }
+
+export const selectWord = (e: MouseEvent, idButton: string) => {
+    var addButton = document.getElementById(idButton)
+    var selection = getSelectedText();
+    let chars = ['.', '?', '!', '+', ',', ':', '。']
+
+    if (chars.some((char) => selection.includes(char)) || selection.trim() == "") {
+      addButton.style.display = 'none';
+    } else {
+        var x = e.clientX,
+            y = e.clientY;
+            addButton.style.top = (y - 50) + 'px';
+            addButton.style.left = (x + 5) + 'px';
+            addButton.style.display = 'block';
+            
+    }
+}
+
+
+export function clearSelection(idButton: string) {
+    document.getElementById(idButton).style.display = 'none'
+
+    var sel = window.getSelection ? window.getSelection() : document.selection;
+    if (sel) {
+        if (sel.removeAllRanges) {
+            sel.removeAllRanges();
+        } else if (sel.empty) {
+            sel.empty();
+        }
+    }
+}
